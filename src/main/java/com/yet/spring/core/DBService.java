@@ -1,6 +1,8 @@
 package com.yet.spring.core;
 
 
+import org.h2.jdbcx.JdbcDataSource;
+
 import java.sql.Connection;
 import java.sql.Driver;
 import java.sql.DriverManager;
@@ -10,7 +12,7 @@ public class DBService {
     private final Connection connection;
 
     public DBService() {
-        this.connection = getMysqlConnection();
+        this.connection = getH2Connection();
     }
 
         public void printConnectInfo () {
@@ -24,10 +26,9 @@ public class DBService {
             }
         }
 
-        @SuppressWarnings("UnusedDeclaration")
         public static Connection getMysqlConnection () {
             try {
-                DriverManager.registerDriver((Driver) Class.forName("com.mysql.jdbc.Driver").newInstance());
+                DriverManager.registerDriver((Driver) Class.forName("com.mysql.cj.jdbc.Driver").newInstance());
 
                 StringBuilder url = new StringBuilder();
 
@@ -35,15 +36,34 @@ public class DBService {
                         append("jdbc:mysql://").        //db type
                         append("localhost:").           //host name
                         append("3306/").                //port
-                        append("usersdb");       //db name
+                        append("mydb");                 //db name
 
                 System.out.println("URL: " + url + "\n");
 
-                Connection connection = DriverManager.getConnection(url.toString(), "root", "root");
+                Connection connection = DriverManager.getConnection(url.toString());
                 return connection;
             } catch (SQLException | InstantiationException | IllegalAccessException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
             return null;
         }
+
+    public static Connection getH2Connection() {
+        try {
+            String url = "jdbc:h2:./h2db";
+            String name = "root";
+            String pass = "root";
+
+            JdbcDataSource ds = new JdbcDataSource();
+            ds.setURL(url);
+            ds.setUser(name);
+            ds.setPassword(pass);
+
+            Connection connection = DriverManager.getConnection(url, name, pass);
+            return connection;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

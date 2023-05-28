@@ -13,29 +13,10 @@
 		<mockito.version>2.2.12</mockito.version>
 		<commons.io.version>2.4</commons.io.version>
 		<aspectj.version>1.8.9</aspectj.version>
-
+		<com.h2database.h2.version>1.4.187</com.h2database.h2.version>
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
-
-	<profiles>
-		<profile>
-			<id>circleci</id>
-			<properties>
-				<!--suppress MavenModelInspection -->
-				<distribution.out.dir>${CIRCLE_ARTIFACTS}</distribution.out.dir>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.eluder.coveralls</groupId>
-						<artifactId>coveralls-maven-plugin</artifactId>
-						<version>4.3.0</version>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 
 	<dependencies>
 		<dependency>
@@ -62,7 +43,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.32</version>
+			<version>8.0.28</version>
 			<scope>provided</scope>
 		</dependency>
 
@@ -70,6 +51,12 @@
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>${aspectj.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.h2database</groupId>
+			<artifactId>h2</artifactId>
+			<version>${com.h2database.h2.version}</version>
 		</dependency>
 
 		<dependency>

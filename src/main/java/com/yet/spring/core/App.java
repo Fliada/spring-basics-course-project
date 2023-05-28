@@ -50,7 +50,7 @@ public class App {
         logEvent(EventType.ERROR, event, "Some event for 2");
         
         event = ctx.getBean(Event.class);
-        logEvent(null, event, "Some event for 3");
+        logEvent(EventType.WARNING, event, "Some event for 3");
     }
     
     public App() {}

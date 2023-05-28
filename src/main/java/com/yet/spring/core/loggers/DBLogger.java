@@ -14,8 +14,8 @@ import com.yet.spring.core.beans.Event;
 
 public class DBLogger extends AbstractLogger {
 
-    private static final String SQL_ERROR_STATE_SCHEMA_EXISTS = "X0Y68";
-    private static final String SQL_ERROR_STATE_TABLE_EXISTS = "X0Y32";
+    private static final String SQL_ERROR_STATE_SCHEMA_EXISTS = "90078";
+    private static final String SQL_ERROR_STATE_TABLE_EXISTS = "42S01";
 
     private JdbcTemplate jdbcTemplate;
     private String schema;
