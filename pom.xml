@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.yet.spring</groupId>
 	<artifactId>com.yet.spring.core</artifactId>
@@ -8,14 +8,11 @@
 	<description>The project created throughout the course 'Spring Framework - The Basics'</description>
 
 	<properties>
-		<spring.version>3.2.13.RELEASE</spring.version>
+		<spring.version>5.3.9</spring.version>
 		<junit.version>4.12</junit.version>
-        <mockito.version>2.2.12</mockito.version>
+		<mockito.version>2.2.12</mockito.version>
 		<commons.io.version>2.4</commons.io.version>
-
 		<aspectj.version>1.8.9</aspectj.version>
-
-        <derby.version>10.13.1.1</derby.version>
 
 		<java.version>1.8</java.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -62,11 +59,12 @@
 			<version>${spring.version}</version>
 		</dependency>
 
-        <dependency>
-            <groupId>org.apache.derby</groupId>
-            <artifactId>derby</artifactId>
-            <version>${derby.version}</version>
-        </dependency>
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.32</version>
+			<scope>provided</scope>
+		</dependency>
 
 		<dependency>
 			<groupId>org.aspectj</groupId>
@@ -87,12 +85,12 @@
 			<scope>test</scope>
 		</dependency>
 
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-            <scope>test</scope>
-        </dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
